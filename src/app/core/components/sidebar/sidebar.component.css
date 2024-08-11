@@ -1,16 +1,31 @@
-:host {
-  display: block;
-  width: 65px !important;
+.sidebar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 65px;
+  height: 100%;
+  background-color: var(--black);
 }
 
-::ng-deep .ng-trigger {
-  width: 65px !important;
+.vertical-menubar {
   background-color: var(--black);
   color: #fff;
+  border: none;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 2rem;
 }
 
-::ng-deep .p-sidebar-header {
+::ng-deep .p-element {
   display: none;
+}
+
+::ng-deep .p-menubar {
+  background: none;
+  border: none;
 }
 
 section {
@@ -34,8 +49,8 @@ section img {
 }
 
 @media (min-width: 1024px) {
-  ::ng-deep .ng-trigger {
-    width: 90px;
+  .sidebar-wrapper {
+    width: 80px;
   }
 
   .list-sidebar img {
