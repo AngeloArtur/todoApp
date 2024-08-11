@@ -1,0 +1,45 @@
+:host {
+  display: block;
+  width: 65px !important;
+}
+
+::ng-deep .ng-trigger {
+  width: 65px !important;
+  background-color: var(--black);
+  color: #fff;
+}
+
+::ng-deep .p-sidebar-header {
+  display: none;
+}
+
+section {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+section img {
+  margin: auto;
+}
+
+.list-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0;
+  gap: 1.5rem;
+  cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+  ::ng-deep .ng-trigger {
+    width: 90px;
+  }
+
+  .list-sidebar img {
+    width: 26px;
+    height: 26px;
+  }
+}

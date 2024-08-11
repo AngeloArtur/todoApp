@@ -1,0 +1,19 @@
+app-sidebar {
+  width: 4.063rem; /* Largura fixa do sidebar */
+}
+
+.content {
+  padding-left: 4.375rem;
+  flex-grow: 1; /* Faz o conteúdo ocupar o espaço restante */
+}
+
+@media (min-width:1024px) {
+  app-sidebar {
+    width: 5rem; /* Largura fixa do sidebar */
+  }
+
+  .content {
+    padding-left: 5.375rem;
+    flex-grow: 1; /* Faz o conteúdo ocupar o espaço restante */
+  }
+}

@@ -1,0 +1,137 @@
+/* WELCOME */
+section {
+  height: 5.875rem;
+
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+}
+
+section > div {
+  align-items: center;
+}
+
+div ul {
+  display: flex;
+  flex-direction: row;
+  gap: 1.2rem;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+div p {
+  color: var(--description);
+  font-weight: 700;
+  padding-left: 6px;
+  padding-right: 12px;
+  margin-bottom: 0;
+}
+
+.welcome {
+  flex-wrap: wrap;
+}
+
+/* BOARD */
+.board {
+  height: 4.375rem;
+  border-bottom: 1px solid var(--description);
+}
+
+.board .btn {
+  background-color: var(--black);
+  border: none;
+  border-radius: 19px;
+  font-size: 65%;
+}
+
+/* TEMPLATE */
+.to-do {
+  justify-content: normal;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  height: auto;
+}
+
+.new-template {
+  border: 1px dashed var(--description);
+  border-radius: 12px;
+  margin-right: 1rem;
+  flex-direction: column;
+  height: auto;
+  min-height: 5rem;
+  width: 18rem;
+}
+
+.new-template:nth-child(n + 2) {
+  margin-top: 1rem;
+}
+
+.new-template .template {
+  width: 16rem;
+  margin: auto;
+  justify-content: space-between;
+  font-size: 14px;
+  margin: 1rem;
+}
+
+.template .add-top p {
+  padding-right: 0;
+  color: var(--black);
+}
+
+.tasks {
+  padding: 10px;
+  border: 1px solid var(--description);
+  background-color: #fff;
+  border-radius: 8px;
+  margin-bottom: .5rem;
+  width: 16rem;
+}
+.description h4{
+  padding: 0;
+  align-items: start !important;
+}
+@media (min-width: 425px) and (max-width: 900px) {
+  .to-do {
+    justify-content: center;
+  }
+}
+@media (min-width: 768px) {
+  .new-template {
+    margin-bottom: 1rem;
+  }
+  .new-template:nth-child(n + 2) {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .welcome {
+    flex-wrap: nowrap;
+  }
+
+  .board .btn {
+    font-size: 100%;
+  }
+
+  .to-do {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    min-height: 10rem;
+  }
+
+  .customized-scrollbar::-webkit-scrollbar {
+    height: 6px;
+    background-color: var(--description);
+    border-radius: 3px;
+  }
+
+  .customized-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--black);
+    border-radius: 3px;
+  }
+
+  .new-template {
+    width: 24rem;
+  }
+}
