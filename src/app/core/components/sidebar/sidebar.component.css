@@ -19,7 +19,7 @@
   padding-top: 2rem;
 }
 
-::ng-deep .p-element {
+::ng-deep .vertical-menubar .p-element {
   display: none;
 }
 
