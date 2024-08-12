@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
 @import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
@@ -7,7 +9,7 @@
   --done: #78d700;
   --progress: #ffa048;
   --limit-date: #ff7979;
-  --date: #888da7;
+  --date: #888da725;
 }
 
 body {
