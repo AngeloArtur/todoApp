@@ -1,0 +1,43 @@
+p-dialog {
+  width: 20rem;
+}
+::ng-deep .p-dialog-resizable {
+  width: 22rem;
+}
+
+::ng-deep .p-dialog-content {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.label-input {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 32rem;
+}
+
+.label-input input,
+::ng-deep .p-inputtext {
+  width: 19rem;
+}
+
+.button-save {
+  width: 19rem;
+  display: flex;
+  justify-content: end;
+}
+
+@media (min-width: 762px) {
+  ::ng-deep .p-dialog-resizable {
+    width: 29rem;
+  }
+  .label-input input,
+  ::ng-deep .p-inputtext {
+    width: 26rem;
+  }
+  .button-save {
+    width: 26rem;
+  }
+}
