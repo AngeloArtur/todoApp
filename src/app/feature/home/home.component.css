@@ -84,12 +84,29 @@ div p {
   border: 1px solid var(--description);
   background-color: #fff;
   border-radius: 8px;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   width: 16rem;
 }
-.description h4{
+
+.description {
+  margin: 0; /* Remove qualquer margem adicional */
+  text-align: start; /* Alinha o texto ao início */
+}
+.date {
+  background-color: var(--date);
+  border-radius: 17px;
+  width: 6.25rem;
+}
+.date p {
+  text-align: center;
   padding: 0;
-  align-items: start !important;
+  font-size: 14px;
+}
+.done {
+  color: var(--done) !important;
+}
+.emerging {
+  color: var(--limit-date) !important;
 }
 @media (min-width: 425px) and (max-width: 900px) {
   .to-do {
