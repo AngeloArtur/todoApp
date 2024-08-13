@@ -1,0 +1,31 @@
+::ng-deep .p-dynamic-dialog {
+  width: 95% !important;
+  min-height: 55% !important;
+}
+
+form {
+  margin-top: 3rem;
+}
+.label-input label {
+  padding-right: 2rem;
+}
+
+.button-save {
+  display: flex;
+  gap: 1rem;
+}
+
+.calendar ::ng-deep .ng-trigger {
+  scale: 0.9;
+  top: -280px !important;
+}
+
+@media (min-width: 768px) {
+  ::ng-deep .p-dynamic-dialog {
+    width: 65% !important;
+  }
+  .calendar ::ng-deep .ng-trigger {
+    scale: 0.85;
+    top: -240px !important;
+  }
+}
