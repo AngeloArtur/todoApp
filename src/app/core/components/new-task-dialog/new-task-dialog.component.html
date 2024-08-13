@@ -29,13 +29,7 @@
       <label for="description" class="font-semibold w-6rem"
         >Task Limit Date</label
       >
-      <p-inputMask
-        mask="99/99/9999"
-        placeholder="dd/mm/yyyy"
-        slotChar="dd/mm/yyyy"
-        formControlName="date"
-        required
-      />
+      <p-calendar formControlName="date" dateFormat="dd/mm/yy" />
     </div>
 
     <div class="button-save">

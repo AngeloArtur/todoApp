@@ -10,6 +10,9 @@ p-dialog {
   flex-direction: column;
   align-items: start;
 }
+::ng-deep p-calendar .ng-trigger {
+  top: -270px !important;
+}
 
 .label-input {
   display: flex;
@@ -29,13 +32,17 @@ p-dialog {
   justify-content: end;
 }
 
-@media (min-width: 762px) {
+@media (min-width: 1024px) {
   ::ng-deep .p-dialog-resizable {
     width: 29rem;
   }
   .label-input input,
   ::ng-deep .p-inputtext {
     width: 26rem;
+  }
+  ::ng-deep p-calendar .ng-trigger {
+    scale: 0.92;
+    top: -350px !important;
   }
   .button-save {
     width: 26rem;

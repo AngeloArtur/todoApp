@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalService } from '../../../shared/services/modal.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NewTaskToDoService } from '../../../shared/services/new-task-to-do.service';
 
 @Component({
   selector: 'app-new-task-dialog',
@@ -15,6 +16,7 @@ export class NewTaskDialogComponent {
   constructor(
     private modalService: ModalService,
     private _fb: FormBuilder,
+    private _todo: NewTaskToDoService,
   ) {
     this.form = this._fb.group({
       title: ['', Validators.required],
@@ -31,12 +33,16 @@ export class NewTaskDialogComponent {
 
   newTask() {
     this.collectionName = this.modalService.getCollectionName();
+    this._todo.setCollectionName(this.collectionName);
     if (this.form.valid) {
       const formData = this.form.value;
       console.log('formData', formData, '\ncollectionName', this.collectionName);
+      console.log(this._todo.formatDateToDDMMYYYY(formData.date))
+      this._todo.addTodo(formData.title, formData.description, formData.date)
     } else {
       console.log('invalid', '\ncollectionName', this.collectionName);
     }
-
+    this.form.reset();
   }
+
 }
