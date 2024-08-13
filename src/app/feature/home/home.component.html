@@ -34,47 +34,77 @@
 <section class="to-do customized-scrollbar d-flex">
   <section class="new-template d-flex">
     <div class="template d-flex">
-      <p>To do (4)</p>
+      <p>To do ({{ lengthTodo }})</p>
       <div class="d-flex add add-top" (click)="openDialog('to-do')">
         <img src="../../../assets/images/homeSvg/add.svg" alt="" />
         <p>Add new task</p>
       </div>
     </div>
 
-    <div class="tasks">
-      <div class="d-flex justify-content-between">
-        <h3>Design new ui presentation</h3>
-        <img src="../../../assets/images/homeSvg/more.svg" alt="" />
+    @for (item of todoItems; track item) {
+      <div class="tasks">
+        <div class="d-flex justify-content-between">
+          <h3>{{ item.title }}</h3>
+          <img src="../../../assets/images/homeSvg/more.svg" alt="" (click)="openTaskDialog(item, 'to-do')" class="add"/>
+        </div>
+        <div class="description">
+          <h4>{{ item.description }}</h4>
+        </div>
+        <div class="date">
+          <p class="emerging">{{ item.date | date: "dd MMM YYYY" }}</p>
+        </div>
       </div>
-      <div class="description">
-        <h4>Dribbble marketing</h4>
-      </div>
-      <div class="date">
-        <p class="emerging">{{ date | date: "dd MMM YYYY" }}</p>
-      </div>
-    </div>
+    }
   </section>
 
   <section class="new-template d-flex">
     <div class="template d-flex">
-      <p>In progress (4)</p>
+      <p>In progress ({{ lengthInProgress }})</p>
       <div class="d-flex add add-top" (click)="openDialog('in-progress')">
         <img src="../../../assets/images/homeSvg/add.svg" alt="" />
         <p>Add new task</p>
       </div>
     </div>
+    @for (item of inProgressItems; track item) {
+      <div class="tasks">
+        <div class="d-flex justify-content-between">
+          <h3>{{ item.title }}</h3>
+          <img src="../../../assets/images/homeSvg/more.svg" alt="" (click)="openTaskDialog(item, 'in-progress')" class="add"/>
+        </div>
+        <div class="description">
+          <h4>{{ item.description }}</h4>
+        </div>
+        <div class="date">
+          <p class="emerging">{{ item.date | date: "dd MMM YYYY" }}</p>
+        </div>
+      </div>
+    }
   </section>
 
   <section class="new-template d-flex">
     <div class="template d-flex">
-      <p>Done (4)</p>
+      <p>Done ({{ lengthDone }})</p>
       <div class="d-flex add add-top" (click)="openDialog('done')">
         <img src="../../../assets/images/homeSvg/add.svg" alt="" />
         <p>Add new task</p>
       </div>
     </div>
-  </section>
 
+    @for (item of doneItems; track item) {
+      <div class="tasks">
+        <div class="d-flex justify-content-between">
+          <h3>{{ item.title }}</h3>
+          <img src="../../../assets/images/homeSvg/more.svg" alt="" (click)="openTaskDialog(item, 'done')" class="add"/>
+        </div>
+        <div class="description">
+          <h4>{{ item.description }}</h4>
+        </div>
+        <div class="date">
+          <p class="done">{{ item.date | date: "dd MMM YYYY" }}</p>
+        </div>
+      </div>
+    }
+  </section>
 </section>
 
 <!-- Incluir o componente do modal -->

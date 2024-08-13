@@ -47,6 +47,7 @@ div p {
 /* TEMPLATE */
 .to-do {
   justify-content: normal;
+  align-items: baseline;
   margin-top: 1rem;
   flex-wrap: wrap;
   height: auto;
@@ -147,8 +148,14 @@ div p {
     background: var(--black);
     border-radius: 3px;
   }
-
   .new-template {
     width: 24rem;
+  }
+  .new-template .template {
+    width: 20rem;
+  }
+
+  .tasks {
+    width: 20rem;
   }
 }
