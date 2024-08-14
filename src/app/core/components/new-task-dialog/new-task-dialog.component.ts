@@ -12,6 +12,7 @@ export class NewTaskDialogComponent {
   public visible: boolean = false;
   public collectionName!: string;
   public form: FormGroup;
+  minDate!:Date;
 
   constructor(
     private modalService: ModalService,
@@ -23,6 +24,7 @@ export class NewTaskDialogComponent {
       description: ['', Validators.required],
       date: ['', Validators.required],
     });
+    this.minDate = new Date();
   }
 
   ngOnInit() {
@@ -36,8 +38,6 @@ export class NewTaskDialogComponent {
     this._todo.setCollectionName(this.collectionName);
     if (this.form.valid) {
       const formData = this.form.value;
-      console.log('formData', formData, '\ncollectionName', this.collectionName);
-      console.log(this._todo.formatDateToDDMMYYYY(formData.date))
       this._todo.addTodo(formData.title, formData.description, formData.date)
     } else {
       console.log('invalid', '\ncollectionName', this.collectionName);

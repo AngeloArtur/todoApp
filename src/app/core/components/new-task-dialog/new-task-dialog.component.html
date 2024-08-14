@@ -1,5 +1,5 @@
 <p-dialog header="Add new Task" [modal]="true" [(visible)]="visible">
-  <span class="p-text-secondary block mb-5">Update your information.</span>
+  <span class="p-text-secondary block mb-5">Add your task.</span>
   <form [formGroup]="form">
     <div class="label-input flex align-items-center gap-3 mb-3">
       <label for="title" class="font-semibold w-6rem">Task Title</label>
@@ -29,11 +29,11 @@
       <label for="description" class="font-semibold w-6rem"
         >Task Limit Date</label
       >
-      <p-calendar formControlName="date" dateFormat="dd/mm/yy" />
+      <p-calendar formControlName="date" dateFormat="dd/mm/yy" [minDate]="minDate"/>
     </div>
 
     <div class="button-save">
-      <button class="btn btn-primary add" (click)="newTask()">Save</button>
+      <button class="btn btn-success add" (click)="newTask()">Save</button>
     </div>
   </form>
 </p-dialog>
