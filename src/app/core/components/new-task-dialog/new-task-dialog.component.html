@@ -9,6 +9,7 @@
         class="flex-auto"
         autocomplete="off"
         formControlName="title"
+        [ngClass]="{ 'ng-invalid ng-dirty': isInvalid }"
         required
       />
     </div>
@@ -22,6 +23,7 @@
         class="flex-auto"
         autocomplete="off"
         formControlName="description"
+        [ngClass]="{ 'ng-invalid ng-dirty': isInvalid }"
         required
       />
     </div>
@@ -29,8 +31,14 @@
       <label for="description" class="font-semibold w-6rem"
         >Task Limit Date</label
       >
-      <p-calendar formControlName="date" dateFormat="dd/mm/yy" [minDate]="minDate"/>
+      <p-calendar
+        formControlName="date"
+        dateFormat="dd/mm/yy"
+        [minDate]="minDate"
+        [ngClass]="{ 'ng-invalid ng-dirty': isInvalid }"
+      />
     </div>
+    <p [ngClass]="isInvalid ? 'd-block alert alert-danger' : 'd-none'">Inform your data correctly</p>
 
     <div class="button-save">
       <button class="btn btn-success add" (click)="newTask()">Save</button>

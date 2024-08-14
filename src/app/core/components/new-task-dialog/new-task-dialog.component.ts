@@ -12,7 +12,9 @@ export class NewTaskDialogComponent {
   public visible: boolean = false;
   public collectionName!: string;
   public form: FormGroup;
-  minDate!:Date;
+  minDate!: Date;
+
+  isInvalid: boolean = false;
 
   constructor(
     private modalService: ModalService,
@@ -36,13 +38,14 @@ export class NewTaskDialogComponent {
   newTask() {
     this.collectionName = this.modalService.getCollectionName();
     this._todo.setCollectionName(this.collectionName);
+    const formData = this.form.value;
     if (this.form.valid) {
-      const formData = this.form.value;
-      this._todo.addTodo(formData.title, formData.description, formData.date)
+      this._todo.addTodo(formData.title, formData.description, formData.date);
+      this.isInvalid = false;
     } else {
       console.log('invalid', '\ncollectionName', this.collectionName);
+      this.isInvalid = true;
     }
     this.form.reset();
   }
-
 }
