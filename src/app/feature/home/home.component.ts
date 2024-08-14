@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   todoItems: any[] = [];
   inProgressItems: any[] = [];
   doneItems: any[] = [];
+  today = new Date();
 
   lengthTodo!: number;
   lengthInProgress!: number;
@@ -67,11 +68,15 @@ export class HomeComponent implements OnInit {
               .map((num: string) => parseInt(num, 10));
             date = new Date(year, month - 1, day);
           }
+          // Calcular a diferença em dias entre a data da task e a data atual
+          const timeDiff = date.getTime() - this.today.getTime();
+          const diffInDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
           // Retorna o item com o id e a data formatada
           return {
             id: item.id, // Inclui o ID aqui
             ...item,
             date: date, // Mantém como Date para ordenação e formatação
+            isEmergency: diffInDays <= 7,
           };
         })
         .sort((a, b) => a.date.getTime() - b.date.getTime()); // Ordena pelas datas, mais próximas primeiro
@@ -97,11 +102,15 @@ export class HomeComponent implements OnInit {
               .map((num: string) => parseInt(num, 10));
             date = new Date(year, month - 1, day);
           }
+          // Calcular a diferença em dias entre a data da task e a data atual
+          const timeDiff = date.getTime() - this.today.getTime();
+          const diffInDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
           // Retorna o item com o id e a data formatada
           return {
             id: item.id, // Inclui o ID aqui
             ...item,
             date: date, // Mantém como Date para ordenação e formatação
+            isEmergency: diffInDays <= 7,
           };
         })
         .sort((a, b) => a.date.getTime() - b.date.getTime()); // Ordena pelas datas, mais próximas primeiro

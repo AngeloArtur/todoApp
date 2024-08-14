@@ -27,10 +27,6 @@ div p {
   margin-bottom: 0;
 }
 
-.welcome {
-  flex-wrap: wrap;
-}
-
 /* BOARD */
 .board {
   height: 4.375rem;
@@ -49,7 +45,6 @@ div p {
   justify-content: normal;
   align-items: baseline;
   margin-top: 1rem;
-  flex-wrap: wrap;
   height: auto;
 }
 
@@ -89,9 +84,13 @@ div p {
   width: 16rem;
 }
 
+.tasks h3{
+  text-transform: capitalize;
+}
+
 .description {
-  margin: 0; /* Remove qualquer margem adicional */
-  text-align: start; /* Alinha o texto ao início */
+  margin: 0;
+  text-align: start;
 }
 .date {
   background-color: var(--date);
@@ -106,14 +105,16 @@ div p {
 .done {
   color: var(--done) !important;
 }
-.emerging {
+.emergency {
   color: var(--limit-date) !important;
 }
+
 @media (min-width: 425px) and (max-width: 900px) {
   .to-do {
     justify-content: center;
   }
 }
+
 @media (min-width: 768px) {
   .new-template {
     margin-bottom: 1rem;
