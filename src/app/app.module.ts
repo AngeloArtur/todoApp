@@ -58,7 +58,7 @@ import { DynamicDialogComponent } from './core/components/dynamic-dialog/dynamic
     provideClientHydration(),
     DatePipe,
     { provide: LOCALE_ID, useValue: 'pt' },
-    DialogService
+    DialogService,
   ],
   bootstrap: [AppComponent],
 })
