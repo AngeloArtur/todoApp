@@ -1,4 +1,4 @@
-<form [formGroup]="form">
+<form [formGroup]="form" class="form-dynamic">
   <div class="label-input flex align-items-center gap-3 mb-3">
     <label for="title" class="font-semibold w-6rem">Task Title</label>
     <input
@@ -34,11 +34,14 @@
       [minDate]="minDate"
     />
   </div>
-
-  <div class="button-save">
+  <p [ngClass]="isInvalid ? 'd-block alert alert-danger' : 'd-none'">
+    Inform your data correctly
+  </p>
+  <div class="button-save d-flex gap-2">
+    <p-confirmPopup></p-confirmPopup>
     <button class="btn btn-success add update" (click)="updateTask()">
       Update
     </button>
-    <button class="btn btn-danger add" (click)="deleteTask()">Delete</button>
+    <button class="btn btn-danger add" (click)="confirmDelete($event)">Delete</button>
   </div>
 </form>

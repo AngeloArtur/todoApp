@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { NewTaskToDoService } from '../../../shared/services/new-task-to-do.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-dynamic-dialog',
@@ -14,15 +15,20 @@ export class DynamicDialogComponent implements OnInit {
   form!: FormGroup;
   minDate!: Date;
 
+  isInvalid: boolean = false;
+
   constructor(
     public ref: DynamicDialogRef,
     public config: DynamicDialogConfig,
     private _todo: NewTaskToDoService,
     private _fb: FormBuilder,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService,
   ) {
     this.collectionName = this.config.data.collection;
     this.taskId = this.config.data.id;
   }
+
   ngOnInit(): void {
     this.minDate = new Date();
     this.form = this._fb.group({
@@ -32,6 +38,30 @@ export class DynamicDialogComponent implements OnInit {
     });
   }
 
+  confirmDelete(event: Event) {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'Do you want to delete this task?',
+      acceptButtonStyleClass: 'p-button-danger p-button-sm',
+      accept: () => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Confirmed',
+          detail: 'Task deleted',
+          life: 3000,
+        });
+        this.deleteTask();
+      },
+      reject: () => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Rejected',
+          detail: 'You have rejected',
+          life: 3000,
+        });
+      },
+    });
+  }
   // Método para deletar a tarefa
   deleteTask() {
     this._todo
@@ -62,8 +92,9 @@ export class DynamicDialogComponent implements OnInit {
         .catch((error) => {
           console.error('Erro ao remover a task: ', error);
         });
+      this.isInvalid = false;
     } else {
-      console.log('inválido');
+      this.isInvalid = true;
     }
   }
 }
