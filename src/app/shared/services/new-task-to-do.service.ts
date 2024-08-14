@@ -24,32 +24,32 @@ export class NewTaskToDoService {
         description,
         date: formattedDate,
       });
-      docRef.then((doc) => {
-        console.log('Task adicionada com ID: ', doc.id);
-      });
     } else {
       console.error('Collection not set');
     }
   }
-  getDonItems(): Observable<any[]> {
-    return this.firestore
-      .collection('to-do')
-      .snapshotChanges()
-      .pipe(
-        map((actions) =>
-          actions.map((a) => {
-            const data: any = a.payload.doc.data();
-            const id = a.payload.doc.id; // Aqui você obtém o ID do documento
-            return { id, ...data };
-          }),
-        ),
-      );
+  updateTask(
+    collection: string,
+    taskId: string,
+    title: string,
+    description: string,
+    date: Date,
+  ): Promise<void> {
+    const formattedDate = this.formatDateToDDMMYYYY(date);
+    if (collection) {
+      return this.firestore
+        .collection(collection)
+        .doc(taskId)
+        .update({ title, description, date: formattedDate });
+    } else {
+      return Promise.reject('Collection not found.');
+    }
   }
   deleteTask(collection: string, taskId: string): Promise<void> {
     if (taskId) {
       return this.firestore.collection(collection).doc(taskId).delete();
     } else {
-      return Promise.reject('Task ID não fornecido.');
+      return Promise.reject('Task ID not found.');
     }
   }
 
