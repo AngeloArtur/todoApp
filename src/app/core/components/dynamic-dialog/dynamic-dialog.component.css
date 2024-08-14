@@ -1,5 +1,5 @@
 ::ng-deep .p-dynamic-dialog {
-  width: 95% !important;
+  width: 26rem !important;
   min-height: 55% !important;
 }
 
@@ -11,6 +11,7 @@ form {
 }
 
 .button-save {
+  margin-top: 2rem;
   display: flex;
   gap: 1rem;
 }
@@ -22,10 +23,10 @@ form {
 
 @media (min-width: 768px) {
   ::ng-deep .p-dynamic-dialog {
-    width: 65% !important;
+    width: 35rem !important;
   }
   .calendar ::ng-deep .ng-trigger {
     scale: 0.85;
-    top: -240px !important;
+    top: -310px !important;
   }
 }

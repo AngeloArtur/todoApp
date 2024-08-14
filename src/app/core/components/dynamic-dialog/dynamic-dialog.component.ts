@@ -12,6 +12,7 @@ export class DynamicDialogComponent implements OnInit {
   collectionName!: string;
   taskId!: string;
   form!: FormGroup;
+  minDate!: Date;
 
   constructor(
     public ref: DynamicDialogRef,
@@ -23,6 +24,7 @@ export class DynamicDialogComponent implements OnInit {
     this.taskId = this.config.data.id;
   }
   ngOnInit(): void {
+    this.minDate = new Date();
     this.form = this._fb.group({
       title: [this.config.data.title],
       description: [this.config.data.description],
@@ -32,9 +34,6 @@ export class DynamicDialogComponent implements OnInit {
 
   // Método para deletar a tarefa
   deleteTask() {
-    console.log('Collection:', this.collectionName);
-    console.log('Task ID:', this.config.data.id);
-
     this._todo
       .deleteTask(this.collectionName, this.taskId)
       .then(() => {
@@ -44,5 +43,27 @@ export class DynamicDialogComponent implements OnInit {
       .catch((error) => {
         console.error('Erro ao remover a task: ', error);
       });
+  }
+
+  updateTask() {
+    const data = this.form.value;
+    if (this.form.valid) {
+      this._todo
+        .updateTask(
+          this.collectionName,
+          this.taskId,
+          data.title,
+          data.description,
+          data.date,
+        )
+        .then(() => {
+          this.ref.close();
+        })
+        .catch((error) => {
+          console.error('Erro ao remover a task: ', error);
+        });
+    } else {
+      console.log('inválido');
+    }
   }
 }
