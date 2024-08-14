@@ -15,12 +15,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { CalendarModule } from 'primeng/calendar';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { DialogModule } from 'primeng/dialog';
 import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextModule } from 'primeng/inputtext';
 import { MenubarModule } from 'primeng/menubar';
+import { ToastModule } from 'primeng/toast';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -53,12 +55,15 @@ import { DynamicDialogComponent } from './core/components/dynamic-dialog/dynamic
     InputTextModule,
     MenubarModule,
     ReactiveFormsModule,
+    ToastModule,
   ],
   providers: [
     provideClientHydration(),
     DatePipe,
     { provide: LOCALE_ID, useValue: 'pt' },
     DialogService,
+    ConfirmationService,
+    MessageService,
   ],
   bootstrap: [AppComponent],
 })
